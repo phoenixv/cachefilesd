@@ -54,14 +54,14 @@ in a consistent location.
 class { 'cachefilesd':
   service_manage      => true,
   service_enable      => true,
-  service_ensure       => 'running'
-  package_ensure       => 'latest'
-  brun				  => '20%'
-  frun                => '20%'
-  bcull               => '20%'
-  fcull				  => '10%'
-  bstop				  => '5%'
-  fstop               => '5%'
+  service_ensure       => 'running',
+  package_ensure       => 'latest',
+  brun				  => '20%',
+  frun                => '20%',
+  bcull               => '20%',
+  fcull				  => '10%',
+  bstop				  => '5%',
+  fstop               => '5%',
 }
 ```
 
