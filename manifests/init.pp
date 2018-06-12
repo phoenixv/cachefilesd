@@ -20,7 +20,7 @@ class cachefilesd (
   include 'stdlib'
   validate_bool($service_enable, $service_manage, $hasstatus, $hasrestart, $disablecull)
   validate_absolute_path($cachefilesd::params::config, $cachedir)
-  validate_string($service_ensure, $package_ensure, $cachefilesd::params::binname, $cachetag)
+  validate_string($service_ensure, $package_ensure, $cachetag)
 
   anchor { 'cachefilesd::begin': }
   -> class { '::cachefilesd::install': }

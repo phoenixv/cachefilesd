@@ -1,5 +1,5 @@
 class cachefilesd::config inherits cachefilesd {
-  file { $cachefilesd::params::config:
+  file { 'cachefilesd_config_file':
     ensure  => file,
     path    => $cachefilesd::params::config,
     owner   => 'root',
