@@ -14,3 +14,11 @@ language: ruby
 before_script: "gem install --no-ri --no-rdoc bundler"
 script: 'bundle exec rake validate && bundle exec rake lint && SPEC_OPTS="--format documentation" bundle exec rake spec'
 gemfile: Gemfile
+matrix:
+  exclude:
+      - rvm: 2.1.9
+      env: PUPPET_VERSION=5.5.1
+      - rvm: 2.2.2
+      env: PUPPET_VERSION=5.5.1
+      - rvm: 2.5.1
+      env: PUPPET_VERSION=4.4.2
