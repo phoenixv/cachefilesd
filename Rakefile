@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'puppetlabs_spec_helper/rake_tasks'
 
+PuppetLint.configuration.send('disable_relative_classname_inclusion')
+
 desc "Run puppet in noop mode and check for syntax errors."
 task :validate do
   Dir['manifests/**/*.pp'].each do |manifest|
@@ -12,4 +14,5 @@ task :validate do
   Dir['templates/**/*.erb'].each do |template|
     sh "erb -P -x -T '-' #{template} | ruby -c"
   end
+  :lint
 end

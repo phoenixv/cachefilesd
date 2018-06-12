@@ -1,4 +1,5 @@
 class cachefilesd::params {
+  $activate_cachefilesd = true
   $service_enable = true
   $service_ensure = 'running'
   $service_manage = true

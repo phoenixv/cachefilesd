@@ -1,7 +1,6 @@
 class cachefilesd::install inherits cachefilesd {
-  package { "$package_name":
-    ensure => $package_ensure,
-    name   => $package_name,
+  package { $cachefilesd::package_name:
+    ensure => $cachefilesd::package_ensure,
+    name   => $cachefilesd::package_name,
   }
-
 }
