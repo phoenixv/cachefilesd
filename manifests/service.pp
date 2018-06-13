@@ -1,13 +1,13 @@
 class cachefilesd::service inherits cachefilesd {
-  if !($service_ensure in ['running', 'stopped']) {
+  if !($cachefilesd::service_ensure in ['running', 'stopped']) {
     fail('service_ensure parameter must be running or stopped')
   }
 
-  if $service_manage == true {
-    service { "$service_name":
-      ensure     => $service_ensure,
-      enable     => $service_enable,
-      name       => $service_name,
+  if $cachefilesd::service_manage == true {
+    service { $cachefilesd::service_name:
+      ensure     => $cachefilesd::service_ensure,
+      enable     => $cachefilesd::service_enable,
+      name       => $cachefilesd::service_name,
       hasstatus  => true,
       hasrestart => true,
     }

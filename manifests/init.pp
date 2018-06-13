@@ -19,12 +19,12 @@ class cachefilesd (
   $secctx           = $cachefilesd::params::secctx) inherits cachefilesd::params {
   include 'stdlib'
   validate_bool($service_enable, $service_manage, $hasstatus, $hasrestart, $disablecull)
-  validate_absolute_path($config, $cachedir)
-  validate_string($service_ensure, $package_ensure, $binname, $cachetag)
+  validate_absolute_path($cachefilesd::params::config, $cachedir)
+  validate_string($service_ensure, $package_ensure, $cachetag)
 
-  anchor { 'cachefilesd::begin': } ->
-  class { '::cachefilesd::install': } ->
-  class { '::cachefilesd::config': } ~>
-  class { '::cachefilesd::service': } ->
-  anchor { 'cachefilesd::end': }
+  anchor { 'cachefilesd::begin': }
+  -> class { '::cachefilesd::install': }
+  -> class { '::cachefilesd::config': }
+  ~> class { '::cachefilesd::service': }
+  -> anchor { 'cachefilesd::end': }
 }
