@@ -31,7 +31,12 @@ class cachefilesd::params {
       $hasstatus = true
       $hasrestart = true
       $cachedir = '/var/cache/fscache'
-      $secctx = 'system_u:system_r:cachefiles_kernel_t:s0'
+      # Only set secctx on systems with SELinux enabled,
+      # see https://bugs.debian.org/909523 for details
+      $secctx = $facts['os']['selinux']['enabled'] ? {
+        true => 'system_u:system_r:cachefiles_kernel_t:s0',
+        false => undef
+      }
     }
     'SuSE'      : {
       $package_name = 'cachefilesd'
